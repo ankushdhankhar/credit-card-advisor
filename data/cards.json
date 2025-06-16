@@ -1,0 +1,211 @@
+[
+  {
+    "name": "HDFC Millennia",
+    "issuer": "HDFC Bank",
+    "annual_fee": 1000,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["online_shopping", "dining", "groceries"],
+    "eligibility": {"min_income": 420000, "credit_score": 700},
+    "perks": ["5% cashback on Amazon", "1% fuel surcharge waiver"],
+    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/millennia/millennia-credit-card.jpg"
+  },
+  {
+    "name": "SBI SimplyCLICK",
+    "issuer": "SBI Card",
+    "annual_fee": 499,
+    "reward_type": "Points",
+    "reward_rate": 10,
+    "categories": ["online_shopping", "entertainment"],
+    "eligibility": {"min_income": 240000, "credit_score": 650},
+    "perks": ["10X rewards on online spends", "Free Amazon Prime"],
+    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/simplyclick-credit-card.png"
+  },
+  {
+    "name": "SBI Cashback Card",
+    "issuer": "SBI Card",
+    "annual_fee": 999,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["online_shopping", "offline_spends"],
+    "eligibility": {"min_income": 300000, "credit_score": 700},
+    "perks": ["5% online cashback", "1% offline cashback", "fuel surcharge waiver"],
+    "image_url": "https://www.cardexpert.in/images/SBI_Cashback_Card.png"
+  },
+  {
+    "name": "SBI Prime",
+    "issuer": "SBI Card",
+    "annual_fee": 2999,
+    "reward_type": "Points",
+    "reward_rate": 10,
+    "categories": ["travel", "entertainment"],
+    "eligibility": {"min_income": 600000, "credit_score": 750},
+    "perks": ["Club Vistara Silver", "Trident Privilege vouchers", "lounge access"],
+    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/sbi-prime-credit-card.png"
+  },
+  {
+    "name": "HDFC Freedom",
+    "issuer": "HDFC Bank",
+    "annual_fee": 500,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["dining", "groceries", "utilities"],
+    "eligibility": {"min_income": 300000, "credit_score": 700},
+    "perks": ["5% cashback on groceries", "fuel surcharge waiver"],
+    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/freedom.png"
+  },
+  {
+    "name": "HDFC Regalia",
+    "issuer": "HDFC Bank",
+    "annual_fee": 2500,
+    "reward_type": "Points",
+    "reward_rate": 4,
+    "categories": ["travel", "dining", "shopping"],
+    "eligibility": {"min_income": 1200000, "credit_score": 750},
+    "perks": ["Airport lounge access", "Travel insurance", "Dining privileges"],
+    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/regalia.png"
+  },
+  {
+    "name": "Amazon Pay ICICI",
+    "issuer": "ICICI Bank",
+    "annual_fee": 0,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["online_shopping", "amazon"],
+    "eligibility": {"min_income": 180000, "credit_score": 700},
+    "perks": ["5% cashback on Amazon (Prime)", "1% on others"],
+    "image_url": "https://www.amazon.in/cbcc/marketpage/image/Amazon_Pay_ICICI_Credit_Card.png"
+  },
+  {
+    "name": "ICICI Coral",
+    "issuer": "ICICI Bank",
+    "annual_fee": 500,
+    "reward_type": "Points",
+    "reward_rate": 2,
+    "categories": ["entertainment", "dining"],
+    "eligibility": {"min_income": 250000, "credit_score": 680},
+    "perks": ["BookMyShow privileges", "Lounge access"],
+    "image_url": "https://images.icicibank.com/medias/icici-coral-credit-card.jpg"
+  },
+  {
+    "name": "Axis Bank ACE",
+    "issuer": "Axis Bank",
+    "annual_fee": 499,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["bills", "online", "fuel"],
+    "eligibility": {"min_income": 600000, "credit_score": 750},
+    "perks": ["5% on bill payments", "4 lounge visits", "fuel waiver"],
+    "image_url": "https://www.axisbank.com/images/default-source/progress-with-us/cards/ace-credit-card.png"
+  },
+  {
+    "name": "Axis My Zone",
+    "issuer": "Axis Bank",
+    "annual_fee": 500,
+    "reward_type": "Cashback",
+    "reward_rate": 40,
+    "categories": ["entertainment", "shopping"],
+    "eligibility": {"min_income": 300000, "credit_score": 700},
+    "perks": ["₹120 off Swiggy", "40% off Zomato"],
+    "image_url": "https://www.axisbank.com/images/default-source/progress-with-us/cards/my-zone-credit-card.png"
+  },
+  {
+    "name": "Flipkart Axis Bank",
+    "issuer": "Axis Bank",
+    "annual_fee": 500,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["flipkart", "online_shopping"],
+    "eligibility": {"min_income": 400000, "credit_score": 700},
+    "perks": ["5% cashback on Flipkart", "4% on other brands"],
+    "image_url": "https://pbs.twimg.com/media/FdYrO6QagAAGaMf?format=jpg&name=large"
+  },
+  {
+    "name": "Airtel Axis Bank",
+    "issuer": "Axis Bank",
+    "annual_fee": 500,
+    "reward_type": "Cashback",
+    "reward_rate": 25,
+    "categories": ["airtel", "utilities", "dining"],
+    "eligibility": {"min_income": 300000, "credit_score": 700},
+    "perks": ["25% cashback on Airtel", "10% utilities", "20% dining"],
+    "image_url": "https://www.axisbank.com/images/cards/airtel-axis-card.png"
+  },
+  {
+    "name": "BPCL SBI Octane",
+    "issuer": "SBI Card",
+    "annual_fee": 1499,
+    "reward_type": "Points",
+    "reward_rate": 7,
+    "categories": ["fuel", "movies", "grocery"],
+    "eligibility": {"min_income": 300000, "credit_score": 700},
+    "perks": ["7.25% value back at BPCL", "Movie & dining rewards"],
+    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/bpcl-octane-card.png"
+  },
+  {
+    "name": "HSBC Cashback",
+    "issuer": "HSBC",
+    "annual_fee": 999,
+    "reward_type": "Cashback",
+    "reward_rate": 10,
+    "categories": ["dining", "groceries", "food_delivery"],
+    "eligibility": {"min_income": 500000, "credit_score": 700},
+    "perks": ["10% on groceries/dining", "1.5% on others", "airport lounge access"],
+    "image_url": "https://www.hsbc.co.in/content/dam/hsbc/in/images/cards/cashback_card.png"
+  },
+  {
+    "name": "AU LIT Credit Card",
+    "issuer": "AU Small Finance Bank",
+    "annual_fee": 0,
+    "reward_type": "Cashback",
+    "reward_rate": 5,
+    "categories": ["shopping", "lifestyle"],
+    "eligibility": {"min_income": 360000, "credit_score": 700},
+    "perks": ["5% on groceries & utilities", "airport lounge access"],
+    "image_url": "https://www.aubank.in/images/default-source/lit-card.jpg"
+  },
+  {
+    "name": "YES Bank Cashback Plus",
+    "issuer": "YES Bank",
+    "annual_fee": 1499,
+    "reward_type": "Cashback",
+    "reward_rate": 10,
+    "categories": ["online_shopping", "bills"],
+    "eligibility": {"min_income": 480000, "credit_score": 700},
+    "perks": ["10% on utilities", "airport lounge access"],
+    "image_url": "https://www.yesbank.in/content/dam/yes-bank/cards/credit-cards/cashback-plus-credit-card.jpg"
+  },
+  {
+    "name": "IndusInd Platinum Aura",
+    "issuer": "IndusInd Bank",
+    "annual_fee": 899,
+    "reward_type": "Points",
+    "reward_rate": 4,
+    "categories": ["shopping", "travel"],
+    "eligibility": {"min_income": 360000, "credit_score": 700},
+    "perks": ["Reward points on spends", "fuel surcharge waiver"],
+    "image_url": "https://www.indusind.com/in/en/personal/cards/credit-cards/images/platinum-aura-card.png"
+  },
+  {
+    "name": "IDFC FIRST Select",
+    "issuer": "IDFC FIRST Bank",
+    "annual_fee": 0,
+    "reward_type": "Points",
+    "reward_rate": 6,
+    "categories": ["all_spends"],
+    "eligibility": {"min_income": 360000, "credit_score": 700},
+    "perks": ["1.5–2% rewards", "Airport & railway lounges"],
+    "image_url": "https://www.cardexpert.in/images/idfc-first-select-credit-card.png"
+  },
+  {
+    "name": "Standard Chartered Smart",
+    "issuer": "Standard Chartered",
+    "annual_fee": 499,
+    "reward_type": "Cashback",
+    "reward_rate": 2,
+    "categories": ["online_shopping", "dining"],
+    "eligibility": {"min_income": 360000, "credit_score": 700},
+    "perks": ["2% cashback", "No joining fee"],
+    "image_url": "https://images.cardinsider.com/idfc-first-select-vs-wealth-credit-card.png"
+  }
+]
