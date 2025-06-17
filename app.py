@@ -11,16 +11,13 @@ load_dotenv()
 # Initialize LLM
 groq = GroqClient()
 
-# Debugging: Show device info
-st.warning(f"Running on: {st.runtime.scriptrunner.get_script_run_context().browser.user_agent}")
-
 # Define question flow
 QUESTIONS = [
     ("income", "💰 What's your approximate monthly income? (e.g., 50000)"),
     ("spending_category", "🛒 Primary spending category? (groceries/dining/travel/fuel/online_shopping)"),
     ("monthly_spend", "📊 Monthly spend in this category? (e.g., 10000)"),
+    ("existing_cards", "💳 Any credit cards you already use? (optional, e.g., HDFC Millennia)"),
     ("credit_score", "🔢 Approximate credit score? (600–900 or 'unknown')"),
-    ("existing_cards", "💳 Do you currently use any credit cards? If yes, list them."),
     ("preferred_benefit", "🎯 Preferred benefit? (cashback/lounge_access/air_miles/reward_points)"),
 ]
 
@@ -107,7 +104,7 @@ if prompt := st.chat_input("Your answer..."):
     current_key = QUESTIONS[st.session_state.current_q][0]
     st.session_state.user_data[current_key] = prompt
 
-    # Validate income & spend
+    # Validate numeric inputs
     if current_key == "income" or current_key == "monthly_spend":
         try:
             value = int(prompt)
@@ -128,7 +125,7 @@ if prompt := st.chat_input("Your answer..."):
                 st.error("Credit score must be between 300–900 or 'unknown'.")
                 st.stop()
 
-    # Go to next question
+    # Move to next question
     st.session_state.current_q += 1
 
     if st.session_state.current_q < len(QUESTIONS):
@@ -136,13 +133,8 @@ if prompt := st.chat_input("Your answer..."):
         st.rerun()
     else:
         with st.spinner("Finding the best cards for you..."):
-            try:
-                recommendations = recommend_cards(st.session_state.user_data)
-                st.session_state.recommended_cards = recommendations
-                st.toast("✅ Cards successfully recommended", icon="✅")
-            except Exception as e:
-                st.error(f"❌ Error recommending cards: {e}")
-                st.stop()
+            recommendations = recommend_cards(st.session_state.user_data)
+        st.session_state.recommended_cards = recommendations
         st.rerun()
 
 # Show recommendations
@@ -160,7 +152,11 @@ if st.session_state.current_q >= len(QUESTIONS) and st.session_state.recommended
 
     show_comparison(st.session_state.recommended_cards, st.session_state.user_data)
 
-# Restart app
+elif st.session_state.current_q >= len(QUESTIONS) and not st.session_state.recommended_cards:
+    st.markdown("## ❌ No suitable cards found")
+    st.info("Try modifying your preferences or spend values.")
+
+# Restart option
 if st.button("🔄 Restart Conversation"):
     st.session_state.messages = []
     st.session_state.user_data = {}
