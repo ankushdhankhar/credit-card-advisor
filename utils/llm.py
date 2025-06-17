@@ -39,6 +39,7 @@ Focus on how it matches their spending and preferences."""
                 messages=[{"role": "user", "content": prompt}],
                 model=self.model,
                 temperature=0.4,
+                
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
