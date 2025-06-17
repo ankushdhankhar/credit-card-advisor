@@ -11,16 +11,20 @@ load_dotenv()
 # Initialize LLM
 groq = GroqClient()
 
+# Debugging: Show device info
+st.warning(f"Running on: {st.runtime.scriptrunner.get_script_run_context().browser.user_agent}")
+
 # Define question flow
 QUESTIONS = [
     ("income", "💰 What's your approximate monthly income? (e.g., 50000)"),
     ("spending_category", "🛒 Primary spending category? (groceries/dining/travel/fuel/online_shopping)"),
     ("monthly_spend", "📊 Monthly spend in this category? (e.g., 10000)"),
     ("credit_score", "🔢 Approximate credit score? (600–900 or 'unknown')"),
+    ("existing_cards", "💳 Do you currently use any credit cards? If yes, list them."),
     ("preferred_benefit", "🎯 Preferred benefit? (cashback/lounge_access/air_miles/reward_points)"),
 ]
 
-# Session state setup
+# Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "user_data" not in st.session_state:
@@ -37,12 +41,12 @@ st.title("💳 Smart Credit Card Advisor")
 progress = st.session_state.current_q / len(QUESTIONS)
 st.progress(progress)
 
-# Display chat history
+# Chat history
 for role, msg in st.session_state.messages:
     with st.chat_message(role, avatar="🧠" if role == "assistant" else "👤"):
         st.write(msg)
 
-# Ask question
+# Ask the next question
 def ask_question():
     if st.session_state.current_q < len(QUESTIONS):
         key, question = QUESTIONS[st.session_state.current_q]
@@ -50,7 +54,7 @@ def ask_question():
         return key
     return None
 
-# Show a recommendation card
+# Show a single recommendation card
 def show_recommendation(card, user_data):
     with st.container(border=True):
         col1, col2 = st.columns([1, 3])
@@ -73,7 +77,7 @@ def show_recommendation(card, user_data):
             apply_link = card.get("apply_link", "#")
             st.link_button("Apply Now", apply_link, use_container_width=True, disabled=(apply_link == "#"))
 
-# Show comparison
+# Show table comparison
 def show_comparison(cards, user_data):
     st.markdown("## 📊 Compare Recommended Cards")
     data = []
@@ -90,21 +94,21 @@ def show_comparison(cards, user_data):
     df = pd.DataFrame(data)
     st.dataframe(df, use_container_width=True, hide_index=True)
 
-# Auto-ask on load
+# Auto-ask question on load
 if st.session_state.current_q < len(QUESTIONS) and (
     not st.session_state.messages or st.session_state.messages[-1][0] == "user"
 ):
     ask_question()
     st.rerun()
 
-# Chat input handler
+# Chat input handling
 if prompt := st.chat_input("Your answer..."):
     st.session_state.messages.append(("user", prompt))
     current_key = QUESTIONS[st.session_state.current_q][0]
     st.session_state.user_data[current_key] = prompt
 
-    # Validate numeric inputs
-    if current_key in ["income", "monthly_spend"]:
+    # Validate income & spend
+    if current_key == "income" or current_key == "monthly_spend":
         try:
             value = int(prompt)
             if value < 0:
@@ -114,7 +118,6 @@ if prompt := st.chat_input("Your answer..."):
         except ValueError:
             st.error("Please enter a valid positive number.")
             st.stop()
-
     elif current_key == "credit_score":
         if prompt.lower() != "unknown":
             try:
@@ -125,7 +128,7 @@ if prompt := st.chat_input("Your answer..."):
                 st.error("Credit score must be between 300–900 or 'unknown'.")
                 st.stop()
 
-    # Move to next
+    # Go to next question
     st.session_state.current_q += 1
 
     if st.session_state.current_q < len(QUESTIONS):
@@ -133,30 +136,31 @@ if prompt := st.chat_input("Your answer..."):
         st.rerun()
     else:
         with st.spinner("Finding the best cards for you..."):
-            recommendations = recommend_cards(st.session_state.user_data)
-            print(f"DEBUG: Got {len(recommendations)} recommendations")  # 👈 Debug
-        st.session_state.recommended_cards = recommendations
+            try:
+                recommendations = recommend_cards(st.session_state.user_data)
+                st.session_state.recommended_cards = recommendations
+                st.toast("✅ Cards successfully recommended", icon="✅")
+            except Exception as e:
+                st.error(f"❌ Error recommending cards: {e}")
+                st.stop()
         st.rerun()
 
-# Final Output Section
-if st.session_state.current_q >= len(QUESTIONS):
+# Show recommendations
+if st.session_state.current_q >= len(QUESTIONS) and st.session_state.recommended_cards:
     st.markdown("## 🧾 Your Profile Summary")
-    with st.expander("Click to view", expanded=True):  # ✅ Expanded by default
+    with st.expander("Click to view", expanded=False):
         for k, v in st.session_state.user_data.items():
             st.write(f"**{k.replace('_', ' ').title()}**: {v}")
     st.divider()
 
-    if st.session_state.recommended_cards:
-        st.markdown(f"## 💳 Here are your top {len(st.session_state.recommended_cards)} recommendations")
-        for card in st.session_state.recommended_cards:
-            show_recommendation(card, st.session_state.user_data)
-            st.divider()
+    st.markdown(f"## 💳 Here are your top {len(st.session_state.recommended_cards)} recommendations")
+    for card in st.session_state.recommended_cards:
+        show_recommendation(card, st.session_state.user_data)
+        st.divider()
 
-        show_comparison(st.session_state.recommended_cards, st.session_state.user_data)
-    else:
-        st.warning("❌ No suitable credit cards found based on your profile. Try adjusting inputs.")
+    show_comparison(st.session_state.recommended_cards, st.session_state.user_data)
 
-# Restart Button
+# Restart app
 if st.button("🔄 Restart Conversation"):
     st.session_state.messages = []
     st.session_state.user_data = {}
