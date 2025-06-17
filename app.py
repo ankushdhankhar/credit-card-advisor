@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 
+# Streamlit config
+st.set_page_config(page_title="Smart Credit Card Advisor", layout="wide")
+
 # Load environment variables
 load_dotenv()
 
@@ -13,11 +16,12 @@ groq = GroqClient()
 
 # Define question flow
 QUESTIONS = [
-    ("income", "What's your approximate monthly income? (e.g., 50000)"),
-    ("spending_category", "Primary spending category? (groceries/dining/travel/fuel/online_shopping)"),
-    ("monthly_spend", "How much do you spend monthly in this category? (e.g., 10000)"),
-    ("credit_score", "Approximate credit score? (600-900 or 'unknown')"),
-    ("preferred_benefit", "Preferred benefit? (cashback/lounge_access/air_miles/reward_points)"),
+    ("income", "💰 What's your approximate monthly income? (e.g., 50000)"),
+    ("spending_category", "🛒 Primary spending category? (groceries/dining/travel/fuel/online_shopping)"),
+    ("monthly_spend", "📊 Monthly spend in this category? (e.g., 10000)"),
+    ("existing_cards", "💳 Do you already use any credit cards? (e.g., HDFC Millennia, ICICI Amazon Pay). If none, type 'None'"),
+    ("credit_score", "🔢 Approximate credit score? (600–900 or 'unknown')"),
+    ("preferred_benefit", "🎯 Preferred benefit? (cashback/lounge_access/air_miles/reward_points)"),
 ]
 
 # Initialize session state
@@ -33,9 +37,13 @@ if "recommended_cards" not in st.session_state:
 # Title
 st.title("💳 Smart Credit Card Advisor")
 
-# Show message history
+# Progress bar
+progress = st.session_state.current_q / len(QUESTIONS)
+st.progress(progress)
+
+# Chat history
 for role, msg in st.session_state.messages:
-    with st.chat_message(role):
+    with st.chat_message(role, avatar="🧠" if role == "assistant" else "👤"):
         st.write(msg)
 
 # Ask the next question
@@ -46,34 +54,32 @@ def ask_question():
         return key
     return None
 
-# Display a single card recommendation
+# Show a single recommendation card
 def show_recommendation(card, user_data):
     with st.container(border=True):
         col1, col2 = st.columns([1, 3])
-        
         with col1:
             if card.get("image_url"):
-                st.image(card["image_url"], width=150)
+                st.image(card["image_url"], width=100)
             else:
                 st.markdown("🖼️ Image not available")
-        
         with col2:
             st.subheader(card["name"])
             st.caption(f"**Issuer:** {card['issuer']} | **Annual Fee:** ₹{card['annual_fee']}")
-            
             annual_rewards = calculate_rewards(card, user_data)
             st.success(f"**You could earn ₹{annual_rewards}/year in {card['reward_type']}**")
-            
-            with st.expander("Why this card?"):
-                reason = groq.generate_recommendation_reason(card, user_data)
-                st.write(reason)
-            
-            st.link_button("Apply Now", "#", use_container_width=True)
 
-# Show card comparison table
+            with st.expander("Why this card?"):
+                with st.spinner("Generating reason..."):
+                    reason = groq.generate_recommendation_reason(card, user_data)
+                    st.write(reason)
+
+            apply_link = card.get("apply_link", "#")
+            st.link_button("Apply Now", apply_link, use_container_width=True, disabled=(apply_link == "#"))
+
+# Show table comparison
 def show_comparison(cards, user_data):
     st.markdown("## 📊 Compare Recommended Cards")
-    
     data = []
     for card in cards:
         data.append({
@@ -85,54 +91,72 @@ def show_comparison(cards, user_data):
             "Est. Annual Rewards (₹)": calculate_rewards(card, user_data),
             "Top Perks": ", ".join(card["perks"][:2]),
         })
-    
     df = pd.DataFrame(data)
     st.dataframe(df, use_container_width=True, hide_index=True)
 
-# Show first question if app just started
-if not st.session_state.messages and st.session_state.current_q == 0:
+# Auto-ask question on load
+if st.session_state.current_q < len(QUESTIONS) and (
+    not st.session_state.messages or st.session_state.messages[-1][0] == "user"
+):
     ask_question()
     st.rerun()
 
-# Input handler
+# Chat input handling
 if prompt := st.chat_input("Your answer..."):
     st.session_state.messages.append(("user", prompt))
-    
     current_key = QUESTIONS[st.session_state.current_q][0]
     st.session_state.user_data[current_key] = prompt
-    
-    # Convert income to annual income
-    if current_key == "income":
+
+    if current_key == "income" or current_key == "monthly_spend":
         try:
-            st.session_state.user_data["annual_income"] = int(prompt) * 12
+            value = int(prompt)
+            if value < 0:
+                raise ValueError
+            if current_key == "income":
+                st.session_state.user_data["annual_income"] = value * 12
         except ValueError:
-            st.error("Please enter a valid number")
+            st.error("Please enter a valid positive number.")
             st.stop()
-    
-    # Move to next question
+
+    elif current_key == "credit_score":
+        if prompt.lower() != "unknown":
+            try:
+                score = int(prompt)
+                if score < 300 or score > 900:
+                    raise ValueError
+            except ValueError:
+                st.error("Credit score must be between 300–900 or 'unknown'.")
+                st.stop()
+
+    # Go to next question
     st.session_state.current_q += 1
-    
+
     if st.session_state.current_q < len(QUESTIONS):
         ask_question()
         st.rerun()
     else:
-        # Final step – store results (but don't rerun now)
-        recommendations = recommend_cards(st.session_state.user_data)
+        with st.spinner("Finding the best cards for you..."):
+            recommendations = recommend_cards(st.session_state.user_data)
         st.session_state.recommended_cards = recommendations
-        
-        st.session_state.messages.append((
-            "assistant",
-            f"Here are your top {len(recommendations)} recommendations:"
-        ))
+        st.rerun()
 
-# Show recommendations if already available
+# Show recommendations
 if st.session_state.current_q >= len(QUESTIONS) and st.session_state.recommended_cards:
+    st.markdown("## 🧾 Your Profile Summary")
+    with st.expander("Click to view", expanded=False):
+        for k, v in st.session_state.user_data.items():
+            st.write(f"**{k.replace('_', ' ').title()}**: {v}")
+    st.divider()
+
+    st.markdown(f"## 💳 Here are your top {len(st.session_state.recommended_cards)} recommendations")
+
     for card in st.session_state.recommended_cards:
         show_recommendation(card, st.session_state.user_data)
-    
+        st.divider()
+
     show_comparison(st.session_state.recommended_cards, st.session_state.user_data)
 
-# Restart conversation
+# Restart app
 if st.button("🔄 Restart Conversation"):
     st.session_state.messages = []
     st.session_state.user_data = {}

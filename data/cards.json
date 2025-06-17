@@ -8,7 +8,7 @@
     "categories": ["online_shopping", "dining", "groceries"],
     "eligibility": {"min_income": 420000, "credit_score": 700},
     "perks": ["5% cashback on Amazon", "1% fuel surcharge waiver"],
-    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/millennia/millennia-credit-card.jpg"
+    "image_url": "https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/advisor/in/wp-content/uploads/2021/10/Millennia-cc-featured.png"
   },
   {
     "name": "SBI SimplyCLICK",
@@ -19,7 +19,7 @@
     "categories": ["online_shopping", "entertainment"],
     "eligibility": {"min_income": 240000, "credit_score": 650},
     "perks": ["10X rewards on online spends", "Free Amazon Prime"],
-    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/simplyclick-credit-card.png"
+    "image_url": "https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/advisor/in/wp-content/uploads/2021/09/simplyclick-card-face-2.png"
   },
   {
     "name": "SBI Cashback Card",
@@ -30,7 +30,7 @@
     "categories": ["online_shopping", "offline_spends"],
     "eligibility": {"min_income": 300000, "credit_score": 700},
     "perks": ["5% online cashback", "1% offline cashback", "fuel surcharge waiver"],
-    "image_url": "https://www.cardexpert.in/images/SBI_Cashback_Card.png"
+    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/card-faces/cashback-card-faces/cashback-card-front.png"
   },
   {
     "name": "SBI Prime",
@@ -41,7 +41,7 @@
     "categories": ["travel", "entertainment"],
     "eligibility": {"min_income": 600000, "credit_score": 750},
     "perks": ["Club Vistara Silver", "Trident Privilege vouchers", "lounge access"],
-    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/sbi-prime-credit-card.png"
+    "image_url": "https://tse2.mm.bing.net/th?id=OIP.qeg8TQANs7uoVFWKUgeumwAAAA&pid=Api&P=0&h=180"
   },
   {
     "name": "HDFC Freedom",
@@ -52,7 +52,7 @@
     "categories": ["dining", "groceries", "utilities"],
     "eligibility": {"min_income": 300000, "credit_score": 700},
     "perks": ["5% cashback on groceries", "fuel surcharge waiver"],
-    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/freedom.png"
+    "image_url": "https://tse4.mm.bing.net/th?id=OIP.AU83qu3XP7cWXtvPi6qUfQAAAA&pid=Api&P=0&h=180"
   },
   {
     "name": "HDFC Regalia",
@@ -63,7 +63,7 @@
     "categories": ["travel", "dining", "shopping"],
     "eligibility": {"min_income": 1200000, "credit_score": 750},
     "perks": ["Airport lounge access", "Travel insurance", "Dining privileges"],
-    "image_url": "https://www.hdfcbank.com/content/dam/hdfcbank/cards/credit-cards/regalia.png"
+    "image_url": "https://tse3.mm.bing.net/th?id=OIP.gLTc3c9rsuMhcCuTrbljdgAAAA&pid=Api&P=0&h=180"
   },
   {
     "name": "Amazon Pay ICICI",
@@ -74,7 +74,7 @@
     "categories": ["online_shopping", "amazon"],
     "eligibility": {"min_income": 180000, "credit_score": 700},
     "perks": ["5% cashback on Amazon (Prime)", "1% on others"],
-    "image_url": "https://www.amazon.in/cbcc/marketpage/image/Amazon_Pay_ICICI_Credit_Card.png"
+    "image_url": "https://cardinsider.com/wp-content/uploads/2021/06/amazon-pay.png"
   },
   {
     "name": "ICICI Coral",
@@ -85,7 +85,7 @@
     "categories": ["entertainment", "dining"],
     "eligibility": {"min_income": 250000, "credit_score": 680},
     "perks": ["BookMyShow privileges", "Lounge access"],
-    "image_url": "https://images.icicibank.com/medias/icici-coral-credit-card.jpg"
+    "image_url": "https://cardinsider.com/wp-content/uploads/2021/06/Icici-coral-card.png"
   },
   {
     "name": "Axis Bank ACE",
@@ -96,7 +96,7 @@
     "categories": ["bills", "online", "fuel"],
     "eligibility": {"min_income": 600000, "credit_score": 750},
     "perks": ["5% on bill payments", "4 lounge visits", "fuel waiver"],
-    "image_url": "https://www.axisbank.com/images/default-source/progress-with-us/cards/ace-credit-card.png"
+    "image_url": "https://www.cardexpert.in/wp-content/uploads/2020/10/axis-bank-ace-credit-card-1-665x428.jpg"
   },
   {
     "name": "Axis My Zone",
@@ -107,7 +107,7 @@
     "categories": ["entertainment", "shopping"],
     "eligibility": {"min_income": 300000, "credit_score": 700},
     "perks": ["₹120 off Swiggy", "40% off Zomato"],
-    "image_url": "https://www.axisbank.com/images/default-source/progress-with-us/cards/my-zone-credit-card.png"
+    "image_url": "https://tse4.mm.bing.net/th?id=OIP.nKdg1aE9WTYb-VOlVQIM-QHaEl&pid=Api&P=0&h=180"
   },
   {
     "name": "Flipkart Axis Bank",
@@ -118,7 +118,7 @@
     "categories": ["flipkart", "online_shopping"],
     "eligibility": {"min_income": 400000, "credit_score": 700},
     "perks": ["5% cashback on Flipkart", "4% on other brands"],
-    "image_url": "https://pbs.twimg.com/media/FdYrO6QagAAGaMf?format=jpg&name=large"
+    "image_url": "https://www.paisabazaar.com/wp-content/uploads/2017/10/Flipkart-Axis-Bank-Credit-Card-300x191.jpg"
   },
   {
     "name": "Airtel Axis Bank",
@@ -129,7 +129,7 @@
     "categories": ["airtel", "utilities", "dining"],
     "eligibility": {"min_income": 300000, "credit_score": 700},
     "perks": ["25% cashback on Airtel", "10% utilities", "20% dining"],
-    "image_url": "https://www.axisbank.com/images/cards/airtel-axis-card.png"
+    "image_url": "https://images.fintra.co.in/cms/Airtel-Axis-Bank-Credit-Card.jpeg"
   },
   {
     "name": "BPCL SBI Octane",
@@ -140,7 +140,7 @@
     "categories": ["fuel", "movies", "grocery"],
     "eligibility": {"min_income": 300000, "credit_score": 700},
     "perks": ["7.25% value back at BPCL", "Movie & dining rewards"],
-    "image_url": "https://www.sbicard.com/sbi-card-en/assets/media/images/cards/bpcl-octane-card.png"
+    "image_url": "https://cms-resources.groww.in/uploads/sbi_bpcl_octane_credit_card_1af57a44f4.png"
   },
   {
     "name": "HSBC Cashback",
@@ -151,7 +151,7 @@
     "categories": ["dining", "groceries", "food_delivery"],
     "eligibility": {"min_income": 500000, "credit_score": 700},
     "perks": ["10% on groceries/dining", "1.5% on others", "airport lounge access"],
-    "image_url": "https://www.hsbc.co.in/content/dam/hsbc/in/images/cards/cashback_card.png"
+    "image_url": "https://www.hsbc.ae/content/dam/hsbc/ae/images/credit-cards/cashback-signature-card.jpg"
   },
   {
     "name": "AU LIT Credit Card",
@@ -162,7 +162,7 @@
     "categories": ["shopping", "lifestyle"],
     "eligibility": {"min_income": 360000, "credit_score": 700},
     "perks": ["5% on groceries & utilities", "airport lounge access"],
-    "image_url": "https://www.aubank.in/images/default-source/lit-card.jpg"
+    "image_url": "https://tse4.mm.bing.net/th?id=OIP.qn4NcXQLtXSpAy1sWnwumQAAAA&pid=Api&P=0&h=180"
   },
   {
     "name": "YES Bank Cashback Plus",
@@ -173,7 +173,7 @@
     "categories": ["online_shopping", "bills"],
     "eligibility": {"min_income": 480000, "credit_score": 700},
     "perks": ["10% on utilities", "airport lounge access"],
-    "image_url": "https://www.yesbank.in/content/dam/yes-bank/cards/credit-cards/cashback-plus-credit-card.jpg"
+    "image_url": "https://i.imgur.com/ejrl9rD.jpg"
   },
   {
     "name": "IndusInd Platinum Aura",
@@ -184,7 +184,7 @@
     "categories": ["shopping", "travel"],
     "eligibility": {"min_income": 360000, "credit_score": 700},
     "perks": ["Reward points on spends", "fuel surcharge waiver"],
-    "image_url": "https://www.indusind.com/in/en/personal/cards/credit-cards/images/platinum-aura-card.png"
+    "image_url": "https://www.indusind.com/content/dam/indusind-platform-images/productCategory/desktopImage/creditCard/platinum_aura_master.jpg"
   },
   {
     "name": "IDFC FIRST Select",
@@ -195,7 +195,7 @@
     "categories": ["all_spends"],
     "eligibility": {"min_income": 360000, "credit_score": 700},
     "perks": ["1.5–2% rewards", "Airport & railway lounges"],
-    "image_url": "https://www.cardexpert.in/images/idfc-first-select-credit-card.png"
+    "image_url": "https://jupiter.money/blog/wp-content/uploads/2024/11/idfc-first-bank-select-credit-card.png"
   },
   {
     "name": "Standard Chartered Smart",
@@ -206,6 +206,6 @@
     "categories": ["online_shopping", "dining"],
     "eligibility": {"min_income": 360000, "credit_score": 700},
     "perks": ["2% cashback", "No joining fee"],
-    "image_url": "https://images.cardinsider.com/idfc-first-select-vs-wealth-credit-card.png"
+    "image_url": "https://25174313.fs1.hubspotusercontent-eu1.net/hub/25174313/hubfs/(NEW%20CC)%20standard-chartered_smart-card_new-design-1.jpg?width=500&name=(NEW%20CC)%20standard-chartered_smart-card_new-design-1.jpg"
   }
 ]

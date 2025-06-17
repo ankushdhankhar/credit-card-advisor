@@ -5,7 +5,6 @@ def load_cards():
         return json.load(f)
 
 def calculate_rewards(card, user_data):
-    """Calculate potential annual rewards based on user spending"""
     monthly_spend = int(user_data.get("monthly_spend", 0))
     reward_rate = card["reward_rate"]
     
@@ -14,13 +13,19 @@ def calculate_rewards(card, user_data):
     elif card["reward_type"] == "points":
         return int(monthly_spend * reward_rate * 0.2 * 12)  # Assuming 1pt = ₹0.2
     else:
-        return int(monthly_spend * reward_rate / 200 * 12)  # Fallback
+        return int(monthly_spend * reward_rate / 200 * 12)
 
 def recommend_cards(user_data):
     cards = load_cards()
     eligible_cards = []
 
+    existing_cards = user_data.get("existing_cards", "").lower().split(",")
+    existing_cards = [e.strip() for e in existing_cards if e.strip() and e.lower() != "none"]
+
     for card in cards:
+        if any(name in card["name"].lower() for name in existing_cards):
+            continue  # Skip already owned cards
+
         meets_income = user_data.get("annual_income", 0) >= card["eligibility"]["min_income"]
         matches_category = user_data.get("spending_category", "") in card["categories"]
         matches_benefit = user_data.get("preferred_benefit", "") in [b.lower() for b in card["perks"]]
