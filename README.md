@@ -131,10 +131,3 @@ Watch the app in action! Click the link below to view demo videos hosted on Goog
 
 - 🔍 [Running app on different Devices](https://drive.google.com/drive/folders/12S003TvSttyjxK1UbDQEWbWvAKQA9Xto?usp=sharing)
 
----
-
-## 🤝 Connect
-
-📧 [ankushdhankhar3002@gmail.com](mailto:ankushdhankhar3002@gmail.com)  
-💼 [LinkedIn](https://in.linkedin.com/in/ankush-dhankhar-616a48250)
-
