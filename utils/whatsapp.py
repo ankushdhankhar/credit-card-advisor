@@ -1,10 +1,10 @@
-import os
+import streamlit as st
 from twilio.rest import Client
 from typing import List, Dict
 
-TWILIO_SID = os.getenv("TWILIO_ACCOUNT_SID")
-TWILIO_AUTH = os.getenv("TWILIO_AUTH_TOKEN")
-WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")  # e.g., 'whatsapp:+14155238886'
+TWILIO_SID = st.secrets["TWILIO_ACCOUNT_SID"]
+TWILIO_AUTH = st.secrets["TWILIO_AUTH_TOKEN"]
+WHATSAPP_NUMBER = st.secrets["TWILIO_WHATSAPP_NUMBER"]
 
 def send_whatsapp_message(to_number: str, recommended_cards: List[Dict]) -> str:
     try:
