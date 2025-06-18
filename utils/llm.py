@@ -1,10 +1,11 @@
 import os
 from groq import Groq
 from typing import Dict, Any
+import streamlit as st 
 
 class GroqClient:
     def __init__(self, model: str = "llama3-70b-8192"):
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        self.client = Groq(api_key=st.secrets["GROQ_API_KEY"])
         self.model = model
 
     def generate_recommendation_reason(self, card: Dict[str, Any], user_data: Dict[str, Any]) -> str:
